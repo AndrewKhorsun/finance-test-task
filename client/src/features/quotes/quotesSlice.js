@@ -4,6 +4,7 @@ import io from "socket.io-client";
 const initialState = {
   value: [],
   connect: true,
+  modal : {open:false , modalValue: {}},
 };
 
 export const getQuotes = createAsyncThunk("quotes/getQuotes", (callback) => {
@@ -34,9 +35,13 @@ export const quotesSlice = createSlice({
     deleteData: (state, action) => {
       state.value = state.value.filter((el) => el.ticker !== action.payload);
     },
+
+    openModal: (state, action) => {
+      state.modal = action.payload
+    }
   },
 });
 
-export const { setData, connected, deleteData } = quotesSlice.actions;
+export const { setData, connected, deleteData, openModal } = quotesSlice.actions;
 
 export default quotesSlice.reducer;

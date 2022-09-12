@@ -10,6 +10,7 @@
   justify-content: center;
   align-items: center;
   transition: 0.8s;
+  gap: 50px;
 }
 
 .ticker__conteiner {
@@ -29,7 +30,7 @@
   padding: 5px;
   transition: 0.8s;
   border-bottom: 1px solid #32a1ce;
-  width: 800px;
+  width: 900px;
 }
 
 .ticker:hover {
@@ -65,11 +66,11 @@
 }
 
 .arrow__up {
-  background-image: url(../src/icon/arrowUp.svg);
+  background-image: url(../../icon/arrowUp.svg);
 }
 
 .arrow__down {
-  background-image: url(../src/icon/arrowDown.svg);
+  background-image: url(../../icon/arrowDown.svg);
 }
 
 .button {
@@ -84,3 +85,9 @@
   background-color: #32a1ce;
   color: yellow;
 }
+
+@media screen and (min-width: 769px){
+  .modal-card, .modal-content {
+    width: 900px;
+  }  
+} 

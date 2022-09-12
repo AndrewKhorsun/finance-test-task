@@ -1,10 +1,12 @@
 import React from "react";
 import classNames from "classnames";
-import { useDispatch } from "react-redux";
-import { deleteData } from "../features/quotes/quotesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteData, openModal } from "../../features/quotes/quotesSlice";
+import { Modal } from "../Modal/Modal.jsx";
 
 export function Ticker({ data }) {
   const dispatch = useDispatch();
+  const modal = useSelector((state) => state.quotes.modal);
 
   return (
     <div className="ticker">
@@ -35,12 +37,20 @@ export function Ticker({ data }) {
         </div>
         <button
           type="button"
-          className="btn btn-outline-dark"
+          className="button is-link is-inverted"
+          onClick={() => dispatch(openModal({open:true, modalValue: data}))}
+        >
+          more
+        </button>
+        <button
+          type="button"
+          className="button is-link is-inverted"
           onClick={() => dispatch(deleteData(data.ticker))}
         >
           X
         </button>
       </div>
+      {modal.open && <Modal modalName={modal.modalValue.ticker} />}
     </div>
   );
 }
